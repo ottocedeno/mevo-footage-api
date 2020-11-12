@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_222608) do
+ActiveRecord::Schema.define(version: 2020_11_12_015129) do
+
+  create_table "cameras", force: :cascade do |t|
+    t.string "model"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -27,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_222608) do
     t.boolean "verified"
     t.boolean "authorized_to_share"
     t.integer "category_id"
+    t.integer "camera_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -9,7 +9,7 @@ class CreateVideos < ActiveRecord::Migration[6.0]
       t.boolean :verified
       t.boolean :authorized_to_share
       t.integer :category_id
-
+      t.integer :camera_id
       t.timestamps
     end
   end
