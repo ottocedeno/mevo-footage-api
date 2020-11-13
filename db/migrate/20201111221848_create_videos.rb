@@ -3,7 +3,7 @@ class CreateVideos < ActiveRecord::Migration[6.0]
     create_table :videos do |t|
       t.string :title
       t.string :description
-      t.string :user_website
+      t.string :user_twitter
       t.string :user_email
       t.string :youtube_url
       t.boolean :verified

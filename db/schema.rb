@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_015129) do
   create_table "videos", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "user_website"
+    t.string "user_twitter"
     t.string "user_email"
     t.string "youtube_url"
     t.boolean "verified"
