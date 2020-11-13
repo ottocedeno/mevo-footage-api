@@ -7,4 +7,5 @@ class Video < ApplicationRecord
   validates :user_email, presence: true
   validates :youtube_url, presence: true
 
+  validates :authorized_to_share, inclusion: {in: [true], message: "Must authorize usage of this video."}
 end
