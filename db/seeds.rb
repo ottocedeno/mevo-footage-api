@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-cameras = ["Mevo Plus", "Mevo Mevo Start", "Mevo Core"]
+cameras = ["Mevo Plus", "Mevo Start", "Mevo Core"]
 categories = [
   "House of Worship",
   "Sports",
