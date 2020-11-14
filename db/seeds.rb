@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+cameras = ["Mevo Plus", "Mevo Mevo Start", "Mevo Core"]
+categories = [
+  "House of Worship",
+  "Sports",
+  "Government",
+  "Conferences",
+  "Education",
+  "Gaming",
+  "Fitness",
+  "Hobbies",
+  "Music",
+]
+
+cameras.each do |camera|  
+  Camera.create(model: camera)
+end
+
+categories.each do |category|
+  Category.create(name: category)
+end
