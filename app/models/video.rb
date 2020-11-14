@@ -1,6 +1,8 @@
 class Video < ApplicationRecord
   belongs_to :category
   belongs_to :camera
+
+  before_create :set_verified_to_false
   
   validates :title, presence: true
   validates :description, presence: true
@@ -10,4 +12,8 @@ class Video < ApplicationRecord
   validates :youtube_url, format: {with: /(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/, message: "Must be a valid YouTube link."}
 
   validates :authorized_to_share, inclusion: {in: [true], message: "Must authorize usage of this video."}
+
+  def set_verified_to_false
+    self.verified = false
+  end
 end
