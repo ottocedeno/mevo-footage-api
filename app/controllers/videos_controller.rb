@@ -25,7 +25,7 @@ class VideosController < ApplicationController
   def video_data
     video = {
       title: video_params[:title],
-      description: video_params[:title],
+      description: video_params[:description],
       youtube_url: video_params[:youtube_url],
       user_email: video_params[:user_email],
       authorized_to_share: video_params[:authorized_to_share],
