@@ -1,7 +1,12 @@
 class VideosController < ApplicationController
   def create
     video = Video.new(video_data)
-    byebug
+    if video.valid?
+      video.save
+      render json: {message: "Succesful submission"}, status: :ok
+    else
+      render json: {errors: video.errors_to_strings}, status: :not_acceptable
+    end
   end
 
   private
