@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :videos
+  resources :videos, only: [:create]
+  get '/video-options', to: "application#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
