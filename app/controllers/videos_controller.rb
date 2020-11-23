@@ -1,25 +1,38 @@
 class VideosController < ApplicationController
+
+  def index
+    videos = filtered_videos(params[:camera], params[:category])
+    render json: {videos: videos}, status: :ok
+  end
+
   def create
     video = Video.new(video_data)
     if video.valid?
       video.save
-      render json: {message: "Succesful submission"}, status: :ok
+      render json: {message: "Successful submission"}, status: :ok
     else
       render json: {errors: video.errors_to_strings}, status: :not_acceptable
     end
   end
 
   private
+
+  # Methods for GET Video requests ...
+  def filtered_videos(camera, category)
+    if camera =="All" && category =="All"
+      videos = Video.all     
+    elsif camera =="All" && category !="All"
+      videos = Video.filter_by_category(category)
+    elsif camera !="All" && category =="All"
+      videos = Video.filter_by_camera(camera)
+    else
+      videos = Video.filter_by_camera_and_category(camera, category)
+    end
+  end
+
+  # Methods for POST requests ...
   def video_params
     params.require(:video).permit(:title, :description, :youtube_url, :user_email, :model, :category_name, :authorized_to_share)
-  end
-
-  def find_category
-    category = Category.find_by(name: video_params[:category_name])
-  end
-
-  def find_camera
-    camera = Camera.find_by(model: video_params[:model])
   end
 
   def video_data
@@ -32,5 +45,13 @@ class VideosController < ApplicationController
       category: find_category,
       camera: find_camera
     }
+  end
+
+  def find_category
+    category = Category.find_by(name: video_params[:category_name])
+  end
+
+  def find_camera
+    camera = Camera.find_by(model: video_params[:model])
   end
 end
