@@ -10,8 +10,21 @@ class Video < ApplicationRecord
   validates :user_email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "Must be a valid email." } 
   validates :youtube_url, presence: {message: "Youtube URL can't be blank"}
   validates :youtube_url, format: {with: /(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/, message: "Must be a valid YouTube link."}
-
   validates :authorized_to_share, inclusion: {in: [true], message: "Must authorize usage of this video."}
+
+  def self.filter_by_camera(camera_model)
+    self.all.select {|video| video.camera.model == camera_model}
+  end
+
+  def self.filter_by_category(category_name)
+    self.all.select {|video| video.category.name == category_name}
+  end
+
+  def self.filter_by_camera_and_category(camera_model, category_name)
+    self.all.select {|video| video.camera.model == camera_model && video.category.name == category_name}
+  end
+
+
 
   def errors_to_strings
     error_strings = []
