@@ -2,7 +2,7 @@ class VideosController < ApplicationController
 
   def index
     videos = filtered_videos(params[:camera], params[:category])
-    render json: {videos: videos}, status: :ok
+    render json: VideoSerializer.new(videos).to_serialized_json, status: :ok
   end
 
   def create
