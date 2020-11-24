@@ -20,13 +20,13 @@ class VideosController < ApplicationController
   # Methods for GET Video requests ...
   def filtered_videos(camera, category)
     if camera =="All" && category =="All"
-      videos = Video.all     
+      Video.all     
     elsif camera =="All" && category !="All"
-      videos = Video.filter_by_category(category)
+      Video.filter_by_category(category)
     elsif camera !="All" && category =="All"
-      videos = Video.filter_by_camera(camera)
+      Video.filter_by_camera(camera)
     else
-      videos = Video.filter_by_camera_and_category(camera, category)
+      Video.filter_by_camera_and_category(camera, category)
     end
   end
 
