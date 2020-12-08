@@ -11,7 +11,7 @@ Camera.destroy_all
 Category.destroy_all
 
 
-cameras = ["Mevo Plus", "Mevo Start", "Mevo Core"]
+cameras = ["Mevo Plus", "Mevo Start"]
 categories = [
   "House of Worship",
   "Sports",
